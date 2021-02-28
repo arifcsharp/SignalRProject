@@ -1,0 +1,62 @@
+﻿
+@{
+    ViewBag.Title = "UserRole";
+}
+
+<br /><br />
+
+<div class="card">
+    <div class="card-header" style="background-color:aquamarine">
+        <h3 class="card-title">Active Users</h3>
+    </div>
+    <div class="card-body" style="background-color:burlywood">
+        <div class="form-inline">
+            <div class="input-group mb-xl-1 col-md-5">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="text1">Users:</span>
+                </div>
+                @Html.DropDownList("InactiveUsers", ViewBag.InactiveUserList as SelectList, htmlAttributes: new { @class = "form-control", @aria_describedby = "text1" })
+            </div>
+            <div class="input-group mb-xl-1 col-md-5">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="checkbox" id="active" name="active" aria-label="Checkbox for following text input">
+                    </div>
+                </div>
+                <input type="text" class="form-control" aria-label="Text input with checkbox" disabled="disabled" value="Check to activate">
+            </div>
+            <div class="col-md-2">
+                <input type="submit" id="activate" name="activate" class="btn btn-primary" value="Activate" />
+            </div>
+        </div>
+    </div>
+    <div class="card-footer"></div>
+</div>
+
+<br /><br />
+
+      <div class="card">
+          <div class="card-header" style="background-color:aquamarine">
+              <h3 class="card-title">User's Role</h3>
+          </div>
+          <div class="card-body" style="background-color:burlywood">
+              <div class="form-inline">
+                  <div class="input-group mb-xl-1 col-md-5">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text" id="text3">Users:</span>
+                      </div>
+                      @Html.DropDownList("ActiveUsers", ViewBag.ActiveUserList as SelectList, htmlAttributes: new { @class = "form-control", @aria_describedby = "text3" })
+                  </div>
+                  <div class="input-group mb-xl-1 col-md-5">
+                      <div class="input-group-prepend">
+                          <span class="input-group-text" id="text3">Roles:</span>
+                      </div>
+                      @Html.DropDownList("ExistingRoles", ViewBag.RoleList as SelectList, htmlAttributes: new { @class = "form-control", @aria_describedby = "text3" })
+                  </div>
+                  <div class="col-md-2">
+                      <input type="submit" id="assignRole" name="assignRole" class="btn btn-primary" value="Assign Role" />
+                  </div>
+              </div>
+          </div>
+          <div class="card-footer"></div>
+      </div>

@@ -1,0 +1,76 @@
+﻿
+@{
+    ViewBag.Title = "RoomAssign";
+}
+
+<br /><br />
+
+
+<div class="card">
+    <div class="card-header" style="background-color:cadetblue">
+        <h3 class="card-title">Room assigned to users</h3>
+    </div>
+    <div class="card-body" style="background-color:cornflowerblue">
+        <div class="form-inline">
+            <div class="input-group mb-xl-1 col-md-4">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="text5">Available Rooms:</span>
+                </div>
+                @Html.DropDownList("ChatRooms", ViewBag.ChatRoomList as SelectList, htmlAttributes: new { @class = "form-control", @aria_describedby = "text5" })
+            </div>
+            <div class="input-group mb-xl-1 col-md-3">
+                <div class="input-group-prepend">
+                    <span class="input-group-text" id="text6">Active Users:</span>
+                </div>
+                @Html.DropDownList("UserWithRole", ViewBag.UserListWithRole as SelectList, htmlAttributes: new { @class = "form-control", @aria_describedby = "text6" })
+            </div>
+            <div class="input-group mb-xl-1 col-md-3">
+                <div class="input-group-prepend">
+                    <div class="input-group-text">
+                        <input type="checkbox" id="allowed" name="allowed" aria-label="Checkbox for following text input">
+                    </div>
+                </div>
+                <input type="text" class="form-control" aria-label="Text input with checkbox" disabled="disabled" value="Check to allow">
+            </div>
+            <div class="col-md-2">
+                <input type="submit" id="addUserToARoom" name="addUserToARoom" class="btn btn-primary" value="Assign Room" />
+            </div>
+            <span id="errConRoomMsg" name="errConRoomMsg" class="text-danger col-md-12 offset-2"></span>
+        </div>
+        <div class="col-md-12">&nbsp;&nbsp;</div>
+        <div id="roomWiseUsers" name="roomWiseUsers" class="col-md-12 form-inline">
+            @{
+                string roomName = string.Empty;
+                foreach (dynamic aUserRoom in ViewBag.RoomWiseUsers)
+                {
+                    if (roomName == "")
+                    {
+                        roomName = aUserRoom.RoomName;
+                        @Html.Raw("<div class='card col-md-12 mb-2'><div class='card-body'><h5 class='card-title col-md-12 text-center'>")
+                        @Html.Raw(aUserRoom.RoomName)
+                        @Html.Raw("</h5><span class='col-auto img-thumbnail text-info font-weight-bold border-info'>")
+                        @Html.Raw(aUserRoom.UserRole.UserName)
+                        @Html.Raw("</span>")
+                    }
+                    else if (roomName != aUserRoom.RoomName)
+                    {
+                        roomName = aUserRoom.RoomName;
+                        @Html.Raw("</div></div><div class='card col-md-12 mb-2'><div class='card-body'><h5 class='card-title col-md-12 text-center'>")
+                        @Html.Raw(aUserRoom.RoomName)
+                        @Html.Raw("</h5><span class='col-auto img-thumbnail text-info font-weight-bold border-info'>")
+                        @Html.Raw(aUserRoom.UserRole.UserName)
+                        @Html.Raw("</span>")
+                    }
+                    else
+                    {
+                        @Html.Raw("<span class='col-auto img-thumbnail text-info font-weight-bold border-info'>")
+                        @Html.Raw(aUserRoom.UserRole.UserName)
+                        @Html.Raw("</span>")
+                    }
+                }
+                @Html.Raw("</div></div>")
+            }
+        </div>
+    </div>
+    <div class="card-footer"></div>
+</div>

@@ -1,0 +1,43 @@
+﻿@{
+    ViewBag.Title = "Chat Room";
+}
+<br />
+<br />
+<div class="breadcrumb" style="height:200px;width:600px;margin-left:300px;">
+
+    <div id="loginNameBox" class="input-group mb-xl-1 col-md-auto">
+
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="lblLogin">User ID:</span>
+        </div>
+        <input type="text" class="form-control" id="loginName" name="loginName" placeholder="Write user name" aria-label="Username" aria-describedby="lblLogin" />
+    </div>
+
+    <div id="loginPasswordBox" class="input-group mb-xl-1 col-md-auto">
+        <div class="input-group-prepend">
+            <span class="input-group-text" id="lblPassword">Password:</span>
+        </div>
+        <input type="password" class="form-control" id="loginPassword" name="loginPassword" placeholder="Enter valid password" aria-label="Username" aria-describedby="lblPassword" />
+    </div>
+
+    <div id="loginSubmitBox" class="mb-xl-1 col-md-auto">
+        <input type="submit" id="login" name="login" class="btn btn-success" value="Login" />
+    </div>
+   
+    <div id="logoutSubmitBox" class="mb-xl-1 col-md-12" style="display: none;">
+        <input type="submit" id="logout" name="logout" class="btn btn-primary float-right" value="Logout" />
+    </div>
+</div>
+<div class="form-inline align-items-start">
+    <div id="allowedChatRoomsDiv" class="col-md-3">
+        <p></p>
+
+       
+    </div>
+    <div id="chatBoard" class="col-md-9 border-left border-secondary">
+       
+    </div>
+</div>
+<div style="height:0px;width:0px;overflow:hidden;">
+   
+</div>
